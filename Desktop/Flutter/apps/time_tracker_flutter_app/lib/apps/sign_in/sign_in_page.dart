@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker_flutter_course/customized_widgets/customized_raised_button.dart';
 
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Time Tracker"),
+        title: Text("Time Tracker App"),
         elevation: 5.0,
       ),
       body: _buildContent(),
+      backgroundColor: Colors.blueGrey[300],
     );
   }
 
@@ -27,32 +29,33 @@ class SignInPage extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Container(
-            color: Colors.pink,
-            child: SizedBox(
-              height: 100.0,
-            ),
-          ),
           SizedBox(
             height: 8.0,
           ),
-          Container(
-            color: Colors.greenAccent,
-            child: SizedBox(
-              height: 100.0,
-            ),
+          CustomRaisedButton(
+            child: Text('Sign in with Google'),
+            color: Colors.white,
+            borderRadius: 4.0,
+            onPressed: () {},
           ),
-          SizedBox(
-            height: 8.0,
+          CustomRaisedButton(
+            child: Text('Sign in with Facebook'),
+            color: Colors.white,
+            borderRadius: 4.0,
+            onPressed: () {},
           ),
-          Container(
-            color: Colors.deepPurple,
-            child: SizedBox(
-              height: 100.0,
-            ),
+          CustomRaisedButton(
+            child: Text('Sign in as anonymous'),
+            color: Colors.white,
+            borderRadius: 4.0,
+            onPressed: () {},
           ),
         ],
       ),
     );
+  }
+
+  void _signInWithGoogle() {
+    //TODO
   }
 }
