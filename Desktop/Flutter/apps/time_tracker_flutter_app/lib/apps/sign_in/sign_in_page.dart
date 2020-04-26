@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker_flutter_course/apps/sign_in/sign_in_button.dart';
 import 'package:time_tracker_flutter_course/customized_widgets/customized_raised_button.dart';
 
 class SignInPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class SignInPage extends StatelessWidget {
         elevation: 5.0,
       ),
       body: _buildContent(),
-      backgroundColor: Colors.blueGrey[300],
+      backgroundColor: Colors.blueGrey[100],
     );
   }
 
@@ -30,26 +31,56 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           SizedBox(
+            height: 45.0,
+          ),
+          SignInButton(
+            text: 'Sign in with Google',
+            color: Colors.white,
+            onPressed: () {},
+          ),
+          SizedBox(
             height: 8.0,
           ),
-          CustomRaisedButton(
-            child: Text('Sign in with Google'),
-            color: Colors.white,
-            borderRadius: 4.0,
+          SignInButton(
+            text : 'Sign in with Facebook',
+            textColor: Colors.white,
+            color: Color(0xFF334D92),
+            onPressed: () {},
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          SignInButton(
+            text : 'Sign in with email',
+            textColor: Colors.white,
+            color: Colors.teal[600],
+            onPressed: () {},
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          Text(
+            'OR',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          SignInButton(
+            text : 'Go anonymous',
+            color: Colors.lime,
             onPressed: () {},
           ),
           CustomRaisedButton(
-            child: Text('Sign in with Facebook'),
-            color: Colors.white,
-            borderRadius: 4.0,
-            onPressed: () {},
+              child: Image.asset('images/google-logo.png'),
+              color: Colors.white,
+              onPressed: () {},
           ),
-          CustomRaisedButton(
-            child: Text('Sign in as anonymous'),
-            color: Colors.white,
-            borderRadius: 4.0,
-            onPressed: () {},
-          ),
+
         ],
       ),
     );
