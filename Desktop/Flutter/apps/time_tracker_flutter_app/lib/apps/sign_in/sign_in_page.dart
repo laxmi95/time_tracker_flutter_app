@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker_flutter_course/apps/sign_in/sign_in_button.dart';
-import 'package:time_tracker_flutter_course/customized_widgets/customized_raised_button.dart';
+import 'package:time_tracker_flutter_course/apps/sign_in/social_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignInPage extends StatelessWidget {
+
+  Future<void> _signInAnonymously() async{
+    try {
+      final authResult = await FirebaseAuth.instance.signInAnonymously();
+      print('${authResult.user.uid}');
+    } catch(e){
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +44,8 @@ class SignInPage extends StatelessWidget {
           SizedBox(
             height: 45.0,
           ),
-          SignInButton(
+          SocialSignInButton(
+            assetName: 'images/google-logo.png',
             text: 'Sign in with Google',
             color: Colors.white,
             onPressed: () {},
@@ -41,8 +53,9 @@ class SignInPage extends StatelessWidget {
           SizedBox(
             height: 8.0,
           ),
-          SignInButton(
-            text : 'Sign in with Facebook',
+          SocialSignInButton(
+            assetName: 'images/facebook-logo.png',
+            text: 'Sign in with Facebook',
             textColor: Colors.white,
             color: Color(0xFF334D92),
             onPressed: () {},
@@ -51,7 +64,7 @@ class SignInPage extends StatelessWidget {
             height: 8.0,
           ),
           SignInButton(
-            text : 'Sign in with email',
+            text: 'Sign in with email',
             textColor: Colors.white,
             color: Colors.teal[600],
             onPressed: () {},
@@ -71,16 +84,10 @@ class SignInPage extends StatelessWidget {
             height: 8.0,
           ),
           SignInButton(
-            text : 'Go anonymous',
+            text: 'Go anonymous',
             color: Colors.lime,
-            onPressed: () {},
+            onPressed: _signInAnonymously,
           ),
-          CustomRaisedButton(
-              child: Image.asset('images/google-logo.png'),
-              color: Colors.white,
-              onPressed: () {},
-          ),
-
         ],
       ),
     );
