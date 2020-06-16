@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker_flutter_course/customized_widgets/platform_alert_dialog.dart';
 import 'package:time_tracker_flutter_course/services/auth.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,10 +28,22 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            onPressed: _signOut,
+            onPressed: () => _confirmLogout(context),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _confirmLogout(BuildContext context) async {
+    final didRequestLogout = await PlatformAlertDialog(
+      title : 'Logout',
+      content: 'Are you sure you want to Logout?',
+      cancelActionText: 'Cancel',
+      actionText: 'Logout',
+    ).show(context);
+    if(didRequestLogout == true){
+      _signOut();
+    }
   }
 }
